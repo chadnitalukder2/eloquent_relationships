@@ -19,17 +19,15 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Mechanic</th>
-                            <th>Car Model</th>
-                            <th>Car Owner</th>
+                            <th>Country</th>
+                            <th>Total Post</th>
                         </tr>
                     </thead>
                     <tbody>
-                          @foreach ($mechanics as $data)    
+                          @foreach ($countries as $data)    
                             <tr>
                                 <td>{{ $data->name }}</td>
-                                <td>{{ $data->car->model }} </td>
-                                <td> {{  $data->carOwner->name }}</td>
+                                <td>{{ $data->posts->count() }} </td>
                             </tr>
                             @endforeach
                     </tbody>

@@ -13,6 +13,7 @@ use App\Models\Mechanics;
 use App\Models\Cars;
 use App\Models\Owners;
 
+use App\Models\County;
 
 Route::get('/oneToOne', function () {
   
@@ -78,6 +79,18 @@ Route::get('/hasOneThrough', function () {
 
 
     return view('hasOneThrough', compact('mechanics')); #data patanu hoy
+});
+
+Route::get('/hasManyThrough ', function () {
+   
+    $countries = County::all();
+    //return $countries;
+
+    $countries = County::with('posts')->get();
+   // return $countries;
+
+
+    return view('hasManyThrough', compact('countries')); #data patanu hoy
 });
 
 
