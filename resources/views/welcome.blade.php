@@ -19,14 +19,13 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Phone</th>
+                            <th>Name,Title,comments</th>
+                            <th>Phone,Comments,title</th>
                         </tr>
                     </thead>
                     <tbody>
-                         {{-- @foreach ($users as $data) --}}
-                        @foreach ($users as $data )
-                        
+{{--------------------------------------- -one to one ----------------------------------------}}
+                         {{-- @foreach ($users as $data)
                         <?php 
                         // dd($data->phone_name) ;
                         //  dd($data->phone->toArray(),$data->phone_name->toArray(),$data->toArray()); 
@@ -38,7 +37,26 @@
                             <td> {{ $data->phone_name->name }}</td>
                             @endif
                         </tr>
-                        @endforeach
+                        @endforeach --}}
+{{--------------------------------------- -one to Many ----------------------------------------}}
+                          @foreach ($comments as $data)
+                            <?php 
+                            // dd($data->phone_name) ;
+                            //  dd($data->phone->toArray(),$data->phone_name->toArray(),$data->toArray()); 
+                           
+                            ?>
+                            <tr>
+                                {{-- <td>{{ $data->title }}</td> --}}
+                                <td>{{ $data->message }}</td>
+                                <td>
+                                    {{-- @foreach ($data->comments as $comment )
+                                         {{ $comment->message }}
+                                    @endforeach --}}
+                                    {{ $data->post->title }}
+                                </td>
+                            </tr>
+                            @endforeach
+                        
                     </tbody>
                 </table>
             </div>
