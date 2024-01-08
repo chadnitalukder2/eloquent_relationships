@@ -25,10 +25,18 @@
                     </thead>
                     <tbody>
                          {{-- @foreach ($users as $data) --}}
-                        @foreach ($phones as $data )
+                        @foreach ($users as $data )
+                        
+                        <?php 
+                        // dd($data->phone_name) ;
+                        //  dd($data->phone->toArray(),$data->phone_name->toArray(),$data->toArray()); 
+                       
+                        ?>
                         <tr>
                             <td>{{ $data->name }}</td>
-                            <td>{{ $data->user->name }}</td>
+                            @if($data->phone_name)
+                            <td> {{ $data->phone_name->name }}</td>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>
