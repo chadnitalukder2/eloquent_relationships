@@ -4,9 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Models\Phone;
 
-use App\Models\Post;
+
 use App\Models\Comments;
+use App\Models\Post;
 use App\Models\Category;
+
+use App\Models\Mechanics;
+use App\Models\Cars;
+use App\Models\Owners;
 
 
 Route::get('/oneToOne', function () {
@@ -33,8 +38,7 @@ Route::get('/oneToOne', function () {
 });
 
 Route::get('/oneToMany', function () {
-   
-    #----------------------------------one to many---------------------------------------
+
         $comments = Post::find(1);
         $comments = Post::find(2)->comments;
         //return $comments;
@@ -50,20 +54,32 @@ Route::get('/oneToMany', function () {
     
         return view('oneToMany', compact('comments')); #data patanu hoy
     
-    });
+});
 
-    Route::get('/manyToMany', function () {
-            $posts = Post::all();
-            //return $posts;
+Route::get('/manyToMany', function () {
+        $posts = Post::all();
+        //return $posts;
 
-            $posts = Post::with('categories')->get();
-            $categories = Category::with('posts')->get();
-            //return $posts;
-        
-            
-        
-            return view('manyToMany', compact('categories')); #data patanu hoy
-        
-        });
+        $posts = Post::with('categories')->get();
+        $categories = Category::with('posts')->get();
+        //return $posts;
+    
+        return view('manyToMany', compact('categories')); #data patanu hoy
+    
+});  
+
+Route::get('/hasOneThrough', function () {
+   
+    $mechanics = Mechanics::all();
+    //return $mechanics;
+
+    $mechanics = Mechanics::with('carOwner')->get();
+    //return $mechanics;
+
+
+    return view('hasOneThrough', compact('mechanics')); #data patanu hoy
+});
+
+
 
 
