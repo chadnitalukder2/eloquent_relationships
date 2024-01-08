@@ -31,7 +31,7 @@
                                 <td>{{ $data->car->model }} </td>
                                 <td> {{  $data->carOwner->name }}</td>
                             </tr>
-                            @endforeach
+                            @endforeach   
                     </tbody>
                 </table>
             </div>

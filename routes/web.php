@@ -94,5 +94,13 @@ Route::get('/hasManyThrough ', function () {
 });
 
 
+Route::get('/', function(){
+    //  $data = \DB::table('users')->get();
+    //  return  $data;
+
+
+});
+
+
 
 
